@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&family=Spectral:wght@700&display=swap');
+@import './styles/index.scss';
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto Condensed', BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (max-width: 1440px) {
+  html {
+    font-size: 87.5%; // 14px
+  }
+}
+
+@media (min-width: 1440px) {
+  html {
+    font-size: 93.75%; // 15px
+  }
+}
+
+@media (min-width: 1920px) {
+  html {
+    font-size: 100%; // 16px
+  }
+}

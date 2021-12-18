@@ -1,90 +1,46 @@
-# Front-end Challenge 🏅 2021 - Space Flight News
+# Getting Started with Create React App
 
-## Introdução
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Este é um desafio para que possamos ver as suas habilidades como Front-end Developer.
+## Available Scripts
 
-Nesse desafio você deverá desenvolver uma aplicação web para consumir as informações da API [Space Flight News](https://api.spaceflightnewsapi.net/v3/documentation), uma API pública com informações relacionadas a voos espaciais. 
+In the project directory, you can run:
 
-O projeto a ser desenvolvido por você tem como objetivo exibir os dados dos artigos, com o título, imagem, resumo e data de publicação. Para isso você deve seguir o wireframe que você encontrará logo abaixo. Atente-se, ao desenvolver a aplicação front-end, para conceitos de usabilidade e adeque o wireframe com elementos visuais para os usuários do seu sistema.
+### `npm start`
 
-[SPOILER] As instruções de entrega e apresentação do challenge estão no final deste Readme (=
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### Instruções iniciais obrigatórias
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-- Trabalhar em um repositório em seu usuário ou utilizar o seu github pessoal (não esqueça de colocar no readme a referência a este challenge);
-- O projeto deverá ser desenvolvido com uma das tecnologias a seguir: **React.js | Vue.js | Angular 8+**;
+### `npm test`
 
-### Front-End:
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-Nessa etapa você deverá desenvolver uma aplicação web para consumir a API que você criou. Você deve limitar o `request` para exibir apenas 10 resultados.
+### `npm run build`
 
-Para o desenvolvimento você pode utilizar algum framework CSS. Recomendamos alguns:
-- Tailwind CSS: https://tailwindcss.com/
-- Material UI: https://material-ui.com/
-- Angular Material: https://material.angular.io/
-- Bootstrap: https://getbootstrap.com/
-- Bulma: https://bulma.io/
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-#### Wireframe - listagem de artigos
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-![Wireframe](./img/wireframe.png) 
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-#### Wireframe - modal
+### `npm run eject`
 
-![Wireframe](./img/wireframe-modal.png) 
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-#### Cores, fontes e inspiração
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-![Cores, fontes e inspiração](./img/font-colors.png)
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-**Obrigatório 1** - Seguir o wireframe para a página de listagem de artigos;
+## Learn More
 
-**Obrigatório 2** - Seguir o wireframe do modal. Esse modal deverá ser aberto com informações dos artigos no momento que o usuário clicar no botão "Ver Mais";
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-**Obrigatório 3** - Seguir a paleta de cores e as fontes definidas na imagem acima;
-
-**Obrigatório 4** - Desenvolver a funcionalidade do buscador para que seja possível listar artigos que contenham as palavras no título;
-
-**Obrigatório 5** - Desenvolver a funcionalidade para ordenar os artigos por data, da mais antiga para a mais nova e da mais nova para a mais antiga;
-
-**Obrigatório 6** - Ao clicar no botão "Carregar mais" deve fazer uma nova requisição para carregar mais 10 artigos na página.
-
-**Diferencial 1** Utilizar Query Params para permitir que a busca de artigos seja feita pela a URL;
-
-**Diferencial 2** Escrever Unit Tests ou E2E Test. Escolher a melhor abordagem e biblioteca;
-
-**Diferencial 3** Configurar Docker no Projeto para facilitar o Deploy da equipe de DevOps;
-
-## Readme do Repositório
-
-- Deve conter o título do projeto
-- Uma descrição sobre o projeto em frase
-- Deve conter uma lista com linguagem, framework e/ou tecnologias usadas
-- Como instalar e usar o projeto (instruções)
-- Não esqueça o [.gitignore](https://www.toptal.com/developers/gitignore)
-- Se está usando github pessoal, referencie que é um challenge by coodesh:  
-
->  This is a challenge by [Coodesh](https://coodesh.com/)
-
-## Finalização e Instruções para a Apresentação
-
-Avisar sobre a finalização e enviar para correção.
-
-1. Confira se você respondeu o Scorecard da Vaga que chegou no seu email;
-2. Confira se você respondeu o Mapeamento Comportamental que chegou no seu email;
-3. Acesse: [https://coodesh.com/challenges/review](https://coodesh.com/challenges/review);
-4. Adicione o repositório com a sua solução;
-5. Grave um vídeo, com no máximo 5 minutos, com a apresentação do seu projeto. Foque em pontos obrigatórios e diferenciais quando for apresentar.
-6. Adicione o link da apresentação do seu projeto no README.md.
-7. Verifique se o Readme está bom e faça o commit final em seu repositório;
-8. Confira a vaga desejada;
-9. Envie e aguarde as instruções para seguir no processo. Sucesso e boa sorte. =)
-
-
-## Suporte
-
-Use o nosso canal no slack: http://bit.ly/32CuOMy para tirar dúvidas sobre o processo ou envie um e-mail para contato@coodesh.com.
-
-
+To learn React, check out the [React documentation](https://reactjs.org/).

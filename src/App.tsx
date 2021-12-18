@@ -1,11 +1,9 @@
 import React from 'react';
-import './App.scss';
+import Router from './routes/index';
 
 function App() {
   return (
-    <div>
-      App
-    </div>
+    <Router></Router>
   );
 }
 
