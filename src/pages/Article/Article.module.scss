@@ -1,8 +1,6 @@
 .articleContainer {
     display: flex;
     margin-bottom: 3.75rem;
-    max-height: min-content;
-    overflow: hidden;
 
     .content {
         display: flex;
@@ -21,6 +19,7 @@
         }
 
         .summaryContainer {
+            max-height: 50%;
             overflow: hidden;
             text-overflow: ellipsis;
         }
@@ -32,6 +31,11 @@
         height: 200px;
         width: 500px;
         overflow: hidden;
+
+        img {
+            height: 500px;
+            width: 500px;
+        }
     }
 
     .modalButton {
@@ -60,6 +64,7 @@
         justify-content: space-between;
 
         .imgContainer {
+            height: max-content;
             width: 100%;
 
             img {

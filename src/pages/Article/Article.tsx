@@ -6,7 +6,6 @@ import { ArticleProps } from './../../models/Article.model';
 import format from 'date-fns/format';
 import { Button } from 'react-bootstrap';
 import Skeleton from '../../components/Skeleton/Skeleton';
-import Image from 'react-bootstrap/Image'
 import ArticleModal from '../../components/ArticleModal/ArticleModal';
 
 const Article = () => {
@@ -16,6 +15,7 @@ const Article = () => {
     const [showModal, setShowModal] = React.useState(false);
     const [itemModal, setItemModal] = React.useState<ArticleProps>(null!);
     const [start, setStart] = React.useState(0);
+    const [inputSearchValue, setInputSearchValue] = React.useState('');
     const [limit] = React.useState(2);
     const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
     const [order, setOrder] = React.useState('desc');
@@ -35,46 +35,29 @@ const Article = () => {
 
     const handleOrder = (order: string) => {
         setOrder(order);
-        loadArticles(true);
+        loadArticles(false, true, order);
     }
 
-    const searchArticle = (terms: string) => {
+    const searchArticle = async (terms: string) => {
         const search = `&_title_contains=${terms}`;
+        setInputSearchValue(search || '');
         setStart(0);
-        loadArticles(true, terms ? search : undefined);
+        loadArticles(false, true, undefined, terms ? search : undefined);
     }
 
-    const loadMoreArticles = async () => {
-        const params = `?_start=${start + limit}&_limit=${limit}&_sort=publishedAt:${order}`;
-        const value = document.getElementById('search')?.getAttribute('value');
-        console.log(value);
-        setStart((value) => value + limit);
-        setLoading(true);
-        try {
-            const result = await articleService.getArticles(params);
-            console.log(result.data);
-            setArticles((value) => [...value, ...result.data]);
-        } catch (error) {
-            throw error;
-        } finally {
-            setEmptyMessage(!articles?.length);
-            setLoading(false);
-        }
-    }
-
-    const loadArticles = async (hiddenLoading = false, search?: string) => {
-        const params = `?_start=${start}&_limit=${limit}&_sort=publishedAt:${order}${search || ''}`;
+    const loadArticles = async (loadMore = false, hiddenLoading = false, orderChanged?: string, search?: string) => {
+        const params = `?_start=${loadMore ? start + limit : start}&_limit=${limit}&_sort=publishedAt:${orderChanged || order}${search || inputSearchValue || ''}`;
+        loadMore && setStart((value) => value + limit);
         setLoading(true);
         hiddenLoading && setHiddenLoading(true);
         try {
             const result = await articleService.getArticles(params);
-            console.log(result.data);
-            setArticles(result.data);
+            loadMore ? setArticles((value) => [...value, ...result.data]) : setArticles(result.data);
+            setEmptyMessage(!result?.data?.length);
         } catch (error) {
             throw error;
         } finally {
             setLoading(false);
-            setEmptyMessage(!articles?.length);
             hiddenLoading && setHiddenLoading(false);
         }
     }
@@ -91,12 +74,12 @@ const Article = () => {
                     <div className={styles.articleContainer} key={item.id}>
                         {windowWidth > 768 && index % 2 === 0 && (
                             <div className={styles.imgContainer + ' me-5'}>
-                                <Image src={item.imageUrl} alt={item.title} rounded width={500} height={150} />
+                                <img src={item.imageUrl} alt={item.title} />
                             </div>
                         )}
                         {windowWidth <= 768 && (
                             <div className={styles.imgContainer + ' me-5'}>
-                                <Image src={item.imageUrl} alt={item.title} rounded width={500} height={150} />
+                                <img src={item.imageUrl} alt={item.title} />
                             </div>
                         )}
                         <div className={styles.content}>
@@ -111,7 +94,7 @@ const Article = () => {
                         </div>
                         {windowWidth > 768 && index % 2 !== 0 && (
                             <div className={styles.imgContainer + ' ms-5'}>
-                                <Image src={item.imageUrl} alt={item.title} rounded width={500} height={150} />
+                                <img src={item.imageUrl} alt={item.title} />
                             </div>
                         )}
                     </div>
@@ -119,7 +102,7 @@ const Article = () => {
                 {loading && <Skeleton />}
                 {(articles.length && !loading) ? (
                     <div className={styles.loadMore}>
-                        <Button variant="outline-primary" color='white' onClick={loadMoreArticles}>Carregar mais</Button>
+                        <Button variant="outline-primary" color='white' onClick={() => loadArticles(true)}>Carregar mais</Button>
                     </div>
                 ) : null}
                 {emptyMessage && <p className={styles.emptyMessage}>Nenhum artigo encontrado</p>}

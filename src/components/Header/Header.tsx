@@ -5,9 +5,13 @@ import { Dropdown } from 'react-bootstrap';
 import styles from './Header.module.scss'
 import { DebounceInput } from 'react-debounce-input';
 
-const Header = ({ search, setOrder, loadArticles }: any) => {
+const Header = ({ search, setOrder }: any) => {
     const handleOrder = (order: string) => {
         setOrder(order);
+    }
+
+    const handleSearch = ({ target }: any) => {
+        search(target.value)
     }
     return (
         <>
@@ -18,8 +22,8 @@ const Header = ({ search, setOrder, loadArticles }: any) => {
                         placeholder="Buscar..."
                         minLength={1}
                         id="search"
-                        debounceTimeout={500}
-                        onChange={({ target }) => search(target.value)}
+                        debounceTimeout={200}
+                        onChange={handleSearch}
                     />
                     <div className={styles.searchIcon}>
                         <FontAwesomeIcon icon={faSearch} />
@@ -46,7 +50,6 @@ const Header = ({ search, setOrder, loadArticles }: any) => {
                 </div>
             </div>
         </>
-
     )
 }
 

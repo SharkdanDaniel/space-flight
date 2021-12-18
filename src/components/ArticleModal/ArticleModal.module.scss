@@ -57,6 +57,9 @@
     .wrapperContent {
         flex-direction: column;
         margin-right: 0;
+        max-width: 95%;
+        max-height: 90vh !important;
+        margin-right: 0 !important;
 
         .imgContainer {
             display: flex;
@@ -64,7 +67,7 @@
             align-items: center;
             height: auto;
             width: 100% !important;
-            margin-right: 40px;
+            margin-right: 0 !important;
             margin-bottom: 20px;
         }
     }
