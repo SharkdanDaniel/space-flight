@@ -1,4 +1,5 @@
 import React from 'react';
+import './global.scss';
 import Router from './routes/index';
 
 function App() {

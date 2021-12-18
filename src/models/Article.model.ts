@@ -1,4 +1,4 @@
-export interface Article {
+export interface ArticleProps {
     events: any[];
     featured: boolean;
     id: number;
@@ -8,6 +8,6 @@ export interface Article {
     publishedAt: Date | string;
     summary: string;
     title: string;
-    updatedAt: Date | string
+    updatedAt: Date | string;
     url: string;
 }

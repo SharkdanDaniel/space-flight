@@ -1,8 +1,11 @@
 import React from 'react';
-import sytles from './Article.module.scss';
+import styles from './Article.module.scss';
 import { articleService } from './../../services/Article.service';
+import Header from './../../components/Header/Header';
+import { ArticleProps } from './../../models/Article.model';
 
 const Article = () => {
+    const [articles, setArticles] = React.useState<ArticleProps[]>([]);
 
     const getArticlesCount = async () => {
         try {
@@ -17,20 +20,35 @@ const Article = () => {
         try {
             const result = await articleService.getArticles(params);
             console.log(result.data);
+            setArticles(result.data);
         } catch (error) {
             throw error;
         }
     }
 
     React.useEffect(() => {
-        // getArticlesCount();
-        // getArticles();
+        getArticles();
     }, [])
     return (
-        <div>
-            Articles
-        </div>
+        <>
+            <Header />
+            <main className='container'>
+                {articles.map((item, index) => (
+                    <div className='d-flex'>
+                        <img src={item.imageUrl} alt={item.title} width={'auto'} height={200} />
+                        <div>
+                            <h4>{item.title}</h4>
+                            <span>{item.publishedAt}</span>
+                            <p>{item.summary}</p>
+
+                        </div>
+                    </div>
+                ))}
+            </main>
+        </>
+
     )
+
 }
 
 export default Article
