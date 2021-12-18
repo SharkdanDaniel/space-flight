@@ -1,0 +1,75 @@
+.articleContainer {
+    display: flex;
+    margin-bottom: 3.75rem;
+    max-height: min-content;
+    overflow: hidden;
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .title {
+            font-size: var(--text-3xl);
+            color: var(--black);
+            font-weight: bold;
+        }
+
+        .date {
+            font-size: var(--text-sm);
+            color: var(--dark-purple);
+        }
+
+        .summaryContainer {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+    }
+
+
+    .imgContainer {
+        height: 200px;
+        width: 500px;
+        overflow: hidden;
+    }
+
+    .modalButton {
+        width: 9rem;
+        color: white;
+    }
+
+}
+
+.loadMore {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.75rem;
+    margin-bottom: 2rem;
+}
+
+.emptyMessage {
+    color: var(--dark-purple);
+    text-align: center;
+    font-size: var(--text-xl);
+}
+
+@media (max-width: 768px) {
+    .articleContainer {
+        flex-direction: column;
+        justify-content: space-between;
+
+        .imgContainer {
+            width: 100%;
+
+            img {
+                height: auto;
+                width: 100%;
+            }
+        }
+
+        .modalButton {
+            width: 100%;
+        }
+    }
+}

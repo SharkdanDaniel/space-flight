@@ -2,14 +2,19 @@
     display: flex;
     justify-content: flex-end;
     padding: 1rem;
-    margin-bottom: 40px;
+    margin-bottom: 3.125rem;
 
     .searchContainer {
         position: relative;
         margin-right: 1rem;
 
         .searchInput {
-            width: 280px;
+            width: 17.5rem;
+
+            &:focus {
+                border-color: var(--orange);
+                box-shadow: 0 0 0 0.25rem rgb(208 112 23 / 25%);
+            }
         }
 
         .searchIcon {
@@ -33,6 +38,7 @@
         align-items: center;
         border: 1px solid rgb(206, 212, 218);
         width: 150px;
+        background-color: white;
     }
 
 
@@ -42,7 +48,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 50px;
+    padding-bottom: 3.375rem;
+    margin-bottom: 3.375rem;
     border-bottom: 1px solid var(--dark-purple);
 
     .rocketContainer {
@@ -50,11 +57,11 @@
         border-radius: 50%;
         height: max-content;
         width: max-content;
-        padding: 25px;
+        padding: 1.75rem;
         margin-bottom: 10px;
 
         svg {
-            font-size: 50px;
+            font-size: 3.375rem;
             color: var(--dark-purple);
         }
 

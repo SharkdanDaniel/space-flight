@@ -1,27 +1,39 @@
 import React from 'react';
 import { faRocket, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Dropdown, FormControl } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
 import styles from './Header.module.scss'
+import { DebounceInput } from 'react-debounce-input';
 
-const Header = () => {
+const Header = ({ search, setOrder, loadArticles }: any) => {
+    const handleOrder = (order: string) => {
+        setOrder(order);
+    }
     return (
         <>
             <nav className={styles.nav + ' container'}>
                 <div className={styles.searchContainer}>
-                    <FormControl placeholder='Search' className={styles.searchInput} type='search' />
+                    <DebounceInput
+                        className={styles.searchInput + ' form-control'}
+                        placeholder="Buscar..."
+                        minLength={1}
+                        id="search"
+                        debounceTimeout={500}
+                        onChange={({ target }) => search(target.value)}
+                    />
                     <div className={styles.searchIcon}>
                         <FontAwesomeIcon icon={faSearch} />
                     </div>
                 </div>
                 <Dropdown>
-                    <Dropdown.Toggle variant="white" id="dropdown-basic" className={styles.sortDropdown}>
-                        Sort
+                    <Dropdown.Toggle variant="primary" id="dropdown-basic" className={styles.sortDropdown}>
+                        Ordenar por data
                     </Dropdown.Toggle>
 
-                    <Dropdown.Menu>
-                        <Dropdown.Item href="#/action-1">Mais antigas</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">Mais novas</Dropdown.Item>
+                    <Dropdown.Menu variant='outline-primary'>
+                        <Dropdown.Item onClick={() => handleOrder('asc')}>Mais antigas</Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Item onClick={() => handleOrder('desc')}>Mais novas</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
             </nav>
