@@ -52,6 +52,7 @@ const Article = () => {
         loadMore && setStart((value) => value + limit);
         setLoading(true);
         hiddenLoading && setHiddenLoading(true);
+        setEmptyMessage(false);
         try {
             const result = await articleService.getArticles(params);
             loadMore ? setArticles((value) => [...value, ...result.data]) : setArticles(result.data);
