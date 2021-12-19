@@ -21,6 +21,8 @@ const Article = () => {
     const [order, setOrder] = React.useState('desc');
     const [emptyMessage, setEmptyMessage] = React.useState(false);
 
+    const initialRender = React.useRef(true);
+
     const handleResize = () => {
         setWindowWidth(window.innerWidth);
     }
@@ -34,19 +36,19 @@ const Article = () => {
     }
 
     const handleOrder = (order: string) => {
+        setStart(0);
         setOrder(order);
-        loadArticles(false, true, order);
     }
 
     const searchArticle = async (terms: string) => {
         const search = `&_title_contains=${terms}`;
-        setInputSearchValue(search || '');
         setStart(0);
-        loadArticles(false, true, undefined, terms ? search : undefined);
+        setInputSearchValue(search || '');
     }
 
-    const loadArticles = async (loadMore = false, hiddenLoading = false, orderChanged?: string, search?: string) => {
-        const params = `?_start=${loadMore ? start + limit : start}&_limit=${limit}&_sort=publishedAt:${orderChanged || order}${search || inputSearchValue || ''}`;
+    const loadArticles = async (loadMore = false, hiddenLoading = false, search?: string) => {
+        initialRender.current = false;
+        const params = `?_start=${loadMore ? start + limit : start}&_limit=${limit}&_sort=publishedAt:${order}${search || inputSearchValue || ''}`;
         loadMore && setStart((value) => value + limit);
         setLoading(true);
         hiddenLoading && setHiddenLoading(true);
@@ -61,6 +63,14 @@ const Article = () => {
             hiddenLoading && setHiddenLoading(false);
         }
     }
+
+    React.useEffect(() => {
+        !initialRender.current && loadArticles(false, true)
+    }, [order])
+
+    React.useEffect(() => {
+        !initialRender.current && loadArticles(false, true, inputSearchValue)
+    }, [inputSearchValue])
 
     React.useEffect(() => {
         loadArticles();
